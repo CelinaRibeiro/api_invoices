@@ -12,15 +12,10 @@ class UserController extends Controller
 
     public function index()
     {
-        //return User::all();
-       // return User::select('name as userName', 'email as userEmail')->get();
-       return UserResource::collection(User::all());
+        $users = User::simplePaginate();
 
-    }
+        return UserResource::collection($users);
 
-    public function create()
-    {
-        //
     }
 
 
@@ -36,10 +31,6 @@ class UserController extends Controller
     }
 
 
-    public function edit(string $id)
-    {
-        //
-    }
 
     public function update(Request $request, string $id)
     {
